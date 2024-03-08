@@ -1,0 +1,170 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #FCFDFD;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #52616B;
+    font-weight: bold;
+    font-size: 40px;
+    height: 100px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.scoreboard {
+    height: 200px;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: #F0F5F9;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 4px 4px 4px lightgray;
+}
+
+.scoreboard div {
+    width: 250px;
+}
+
+ h2.player {
+ color: #6F8390;
+ font-size: 32px;   
+}
+
+.scoreboard div.points {
+    font-size: 60px;
+}
+
+.scoreboard .round-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.round-container h2 {
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
+.round-container .counter {
+    font-size: 60px;
+}
+
+.round-container .counter span {
+    color: #52616B;
+}
+
+.playground {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.choose {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.choose h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #6F8390;
+}
+
+.choose .choice-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.choose button {
+    border: unset;
+    background-color: unset;
+}
+
+.choose button img {
+    transition: 0.3s ease;
+    border-radius: 50%;
+}
+
+.choose button img:hover {
+    opacity: 0.8;
+    box-shadow: 0 4px 4px lightgray;
+}
+
+.round-result {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.round-result div{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+h2.you-won,
+h2.you-lose,
+h2.draw {
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2.you-won {
+    color: #169C1B;
+}
+
+h2.you-lose {
+    color: #D72015;
+}
+
+h2.draw {
+    color: #52616B;
+}
+
+
+.light-btn {
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 1em 2.5em;
+    background-color: #C9D6DF;
+    border: none;
+}
+
+.light-btn:hover {
+    opacity: 0.8;
+    box-shadow: 0 4px 4px lightgray;
+}
+
+
+.invisible {
+    display: none;
+}
+
+

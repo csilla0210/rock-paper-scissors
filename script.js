@@ -1,10 +1,10 @@
 let playerScore = 0;
 let computerScore = 0;
 
-for (let i = 1; i <= 5; i++) {
-    playGame();
-}
-console.log(winnerMessage());
+// for (let i = 1; i <= 5; i++) {
+//     playGame();
+// }
+// console.log(winnerMessage());
 
 function playGame() {
     const playerSelection = prompt("Choose: Rock, Paper or Scissors?");
@@ -15,10 +15,6 @@ function playGame() {
     console.log(currentPoints());
 }
 
-/**
- * 
- * @returns returns the final winner.
- */
 function winnerMessage() {
     if (playerScore > computerScore) {
         return "You won!";
@@ -29,18 +25,10 @@ function winnerMessage() {
     }
 }
 
-/**
- * 
- * @returns the current points of the players in a string
- */
 function currentPoints() {
     return `Playerscore: ${playerScore}, ComputerScore: ${computerScore}.`;
 }
 
-
-/**
- * increases the global points of players depending on who won the round
- */
 function roundResult(playRound) {
     if (playRound.includes("You Lose!")) {
         computerScore++;
@@ -49,10 +37,6 @@ function roundResult(playRound) {
     }
 }
 
-/**
- * returns the Computers choice
- * possible values: Rock, Paper, Sciccors
- */
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 3 + 1);
     switch (randomNumber) {
@@ -65,10 +49,6 @@ function getComputerChoice() {
     }
 }
 
-/**
- * 
- * @returns the status of the current round based on player's and computer's choice
- */
 function playRound(playerSel, computerSelection) {
     const playerSelection = playerSel.charAt(0).toUpperCase() + playerSel.substring(1).toLowerCase();
     if (playerSelection === computerSelection) {

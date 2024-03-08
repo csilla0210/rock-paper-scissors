@@ -3,10 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
+    <title>Rock Paper Scissors game</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h1>Rock Paper Scissors</h1>
+    <div class="scoreboard">
+        <div>
+            <h2 class="player">Your<br>score</h2>
+            <div class="points">0</div>
+        </div>
+        <div class="round-container">
+            <h2>Round</h2>
+            <div class="counter">1<span>/5</span></div>
+        </div>
+        <div>
+            <h2 class="player">Computer<br>score</h2>
+            <div class="points">0</div>
+        </div>
+    </div>
+    <div class="playground">
+        <div class="choose">
+            <h2>Choose</h2>
+            <div class="choice-buttons">
+                <button><img src="images/rock.png" alt=""></button>
+                <button><img src="images/paper.png" alt=""></button>
+                <button><img src="images/scissors.png" alt=""></button>
+            </div>
+        </div>
+        <div class="round-result invisible">
+            <div>
+                <h2 class="player">Your<br>choice</h2>
+                <div class="player-choice">
+                    <img src="images/paper.png" alt="">
+                </div>
+            </div>
+            <div>
+                <p class="round-result-message">Paper beats Rock!</p>
+                <h2 class="you-won">You won!</h2>
+                <h2 class="you-lose invisible">You lose!</h2>
+                <h2 class="draw invisible">Draw!</h2>
+                <button class="next-round light-btn">Next round</button>
+            </div>
+            <div>
+                <h2 class="player">Computer's<br>choice</h2>
+                <div class="computer-choice">
+                    <img src="images/rock.png" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
