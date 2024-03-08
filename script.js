@@ -50,10 +50,10 @@ function playGame() {
     roundResult(result);
     setPlayersScore(computerScore, playerScore);
     setRoundCounter(roundCounter);
-    roundCounter++;
-    if (roundCounter > 5) {
+    if (playerScore >= 5 || computerScore >= 5) {
         showGameOverScreen();
-    }    
+    }   
+    roundCounter++; 
 }
 
 function resetGame() {
@@ -80,12 +80,9 @@ function setGameOverTitle() {
     if (computerScore > playerScore) {
         gameOverTitle.textContent = "You Lose!";
         gameOverTitle.classList.add("you-lose");
-    } else if (playerScore > computerScore) {
+    } else {
         gameOverTitle.textContent = "You Won!";
         gameOverTitle.classList.add("you-won");
-    } else {
-        gameOverTitle.textContent = "Draw!";
-        gameOverTitle.classList.add("draw");
     }
 }
 
@@ -99,9 +96,7 @@ function setGameOverPoints() {
 
 function setRoundCounter(roundCounter) {
     const roundCounterText = document.querySelector(".round-container .counter");
-    const roundCounterMax = document.querySelector(".round-container .counter span");
     roundCounterText.textContent = roundCounter;
-    roundCounterText.appendChild(roundCounterMax);
 }
 
 function roundResult(playRound) {
