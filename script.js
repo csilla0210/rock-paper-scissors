@@ -37,6 +37,8 @@ scissors.addEventListener("click", () => {
     changeView();
 })
 nextRound.addEventListener("click", () => {
+    roundCounter++;
+    setRoundCounter(roundCounter);
     changeView();
 })
 newGameButton.addEventListener("click", () => {
@@ -49,11 +51,9 @@ function playGame() {
     displayChoices();
     roundResult(result);
     setPlayersScore(computerScore, playerScore);
-    setRoundCounter(roundCounter);
     if (playerScore >= 5 || computerScore >= 5) {
         showGameOverScreen();
-    }   
-    roundCounter++; 
+    }    
 }
 
 function resetGame() {
