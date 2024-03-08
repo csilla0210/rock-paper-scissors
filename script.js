@@ -2,17 +2,24 @@ let playerScore = 0;
 let computerScore = 0;
 let playerChoice = "";
 let computerChoice = "";
-let roundCounter = 0;
+let roundCounter = 1;
 
 const rock = document.querySelector("button.rock");
 const paper = document.querySelector("button.paper");
 const scissors = document.querySelector("button.scissors");
 const nextRound = document.querySelector("button.next-round");
+const newGameButton = document.querySelector("button.new-game");
 const roundResultMessage = document.querySelector(".round-result-message p");
 const roundWin = document.querySelector("h2.you-won");
 const roundLose = document.querySelector("h2.you-lose");
 const roundDraw = document.querySelector("h2.draw");
 const roundResultTitles = document.querySelectorAll(".round-result-message h2");
+const gameOverTitle = document.querySelector(".game-over h2");
+
+const chooseView = document.querySelector(".playground .choose");
+const resultView = document.querySelector(".playground .round-result");
+const currentRoundResult = document.querySelector(".round-result .round-result-message");
+const gameOverView = document.querySelector("div.game-over");
 
 rock.addEventListener("click", () => {
     playerChoice = "Rock";
@@ -32,49 +39,83 @@ scissors.addEventListener("click", () => {
 nextRound.addEventListener("click", () => {
     changeView();
 })
+newGameButton.addEventListener("click", () => {
+    resetGame();
+})
 
 function playGame() {
     computerChoice = getcomputerChoice();
    let result = playRound(playerChoice, computerChoice);
     displayChoices();
     roundResult(result);
+    setPlayersScore(computerScore, playerScore);
+    setRoundCounter(roundCounter);
     roundCounter++;
-    countRounds();
+    if (roundCounter > 5) {
+        showGameOverScreen();
+    }    
 }
 
 function resetGame() {
-    roundCounter = 0;
+    roundCounter = 1;
+    setRoundCounter(roundCounter);
     playerScore = 0;
     computerScore = 0;
+    setPlayersScore(computerScore, playerScore);
+    gameOverTitle.classList.remove("you-win", "you-lose", "draw");
+    chooseView.classList.remove("invisible");
+    resultView.classList.add("invisible");
+    gameOverView.classList.add("invisible");
+    currentRoundResult.classList.remove("invisible");
 }
 
-function countRounds() {
+function showGameOverScreen() {
+    setGameOverTitle();
+    setGameOverPoints();
+    gameOverView.classList.remove("invisible");
+    currentRoundResult.classList.add("invisible");
+}
+
+function setGameOverTitle() {
+    if (computerScore > playerScore) {
+        gameOverTitle.textContent = "You Lose!";
+        gameOverTitle.classList.add("you-lose");
+    } else if (playerScore > computerScore) {
+        gameOverTitle.textContent = "You Won!";
+        gameOverTitle.classList.add("you-won");
+    } else {
+        gameOverTitle.textContent = "Draw!";
+        gameOverTitle.classList.add("draw");
+    }
+}
+
+function setGameOverPoints() {
+    const playerFinalScore = document.querySelector(".game-over .player-final-score");
+    const computerFinalScore = document.querySelector(".game-over .computer-final-score");
+    playerFinalScore.textContent = `Your score: ${playerScore}`;
+    computerFinalScore.textContent = `Computer score: ${computerScore}`;
+
+}
+
+function setRoundCounter(roundCounter) {
     const roundCounterText = document.querySelector(".round-container .counter");
     const roundCounterMax = document.querySelector(".round-container .counter span");
     roundCounterText.textContent = roundCounter;
     roundCounterText.appendChild(roundCounterMax);
 }
 
-function winnerMessage() {
-    if (playerScore > computerScore) {
-        return "You won!";
-    } else if(playerScore < computerScore) {
-        return "You lose!";
-    } else {
-        return "Draw!";
-    }
-}
-
 function roundResult(playRound) {
-    const computerScoreText = document.querySelector(".scoreboard .computer.points");
-    const playerScoreText = document.querySelector(".scoreboard .player.points");
     if (playRound === -1) {
         computerScore++;
     } else if (playRound === 1) {
         playerScore++;
     }
-    console.log(playRound);
-    computerScoreText.textContent = `${computerScore}`;
+}
+
+function setPlayersScore(computerScore, playerScore) {
+    const computerScoreText = document.querySelector(".scoreboard .computer.points");
+    const playerScoreText = document.querySelector(".scoreboard .player.points");
+    computerScoreText.textContent = computerScore;
     playerScoreText.textContent = playerScore;
 }
 
@@ -153,8 +194,6 @@ function displayChoices() {
 }
 
 function changeView() {
-    const choose = document.querySelector(".playground .choose");
-    const resultView = document.querySelector(".playground .round-result");
-    choose.classList.toggle("invisible");
+    chooseView.classList.toggle("invisible");
     resultView.classList.toggle("invisible");
 }
